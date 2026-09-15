@@ -170,32 +170,32 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Badge di luar glass-panel */}
-              <div className="absolute bottom-4 right-4 lg:bottom-6 lg:-right-8 flex flex-col gap-3 z-20">
-                    <div className="glass-panel px-3.5 py-3 flex items-center gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
-                      <div className="w-9 h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
-                        <Thermometer className="w-4 h-4 text-electric" />
+              <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 lg:bottom-6 lg:-right-8 flex flex-col gap-2 sm:gap-3 z-20">
+                    <div className="glass-panel px-2.5 py-2 sm:px-3.5 sm:py-3 flex items-center gap-2 sm:gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
+                      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
+                        <Thermometer className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white leading-tight">Tolak Panas Maksimal</div>
-                        <div className="text-[10px] text-electric font-medium mt-0.5">Infrared Rejection 98%</div>
+                        <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">Tolak Panas Maksimal</div>
+                        <div className="text-[8px] sm:text-[10px] text-electric font-medium mt-0.5">Infrared Rejection 98%</div>
                       </div>
                     </div>
-                    <div className="glass-panel px-3.5 py-3 flex items-center gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
-                      <div className="w-9 h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
-                        <Eye className="w-4 h-4 text-electric" />
+                    <div className="glass-panel px-2.5 py-2 sm:px-3.5 sm:py-3 flex items-center gap-2 sm:gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
+                      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
+                        <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white leading-tight">Privasi & Kenyamanan</div>
-                        <div className="text-[10px] text-electric font-medium mt-0.5">Pilihan Kegelapan 20% - 80%</div>
+                        <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">Privasi & Kenyamanan</div>
+                        <div className="text-[8px] sm:text-[10px] text-electric font-medium mt-0.5">Pilihan Kegelapan 20% - 80%</div>
                       </div>
                     </div>
-                    <div className="glass-panel px-3.5 py-3 flex items-center gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
-                      <div className="w-9 h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
-                        <ShieldCheck className="w-4 h-4 text-electric" />
+                    <div className="glass-panel px-2.5 py-2 sm:px-3.5 sm:py-3 flex items-center gap-2 sm:gap-3 cursor-default group/badge hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_40px_rgba(25,167,255,0.2)] hover:border-electric/40">
+                      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-electric/15 border border-electric/30 flex items-center justify-center shrink-0 group-hover/badge:bg-electric/25 group-hover/badge:border-electric/50 transition-all duration-300">
+                        <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-electric" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white leading-tight">Perlindungan UV 99.9%</div>
-                        <div className="text-[10px] text-electric font-medium mt-0.5">Cegah Degradasi Interior</div>
+                        <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">Perlindungan UV 99.9%</div>
+                        <div className="text-[8px] sm:text-[10px] text-electric font-medium mt-0.5">Cegah Degradasi Interior</div>
                       </div>
                   </div>
               </div>

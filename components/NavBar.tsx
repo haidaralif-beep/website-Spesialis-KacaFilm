@@ -23,8 +23,8 @@ export default function NavBar() {
             <a href="https://wa.me/6289637033005?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20kaca%20film." target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2 text-sm font-medium border border-electric text-electric hover:bg-electric hover:text-background transition-all rounded-full">Hubungi Kami</a>
           </div>
 
-          <button onClick={() => setOpen(!open)} className="md:hidden text-electric p-2">
-            <span className="text-xl">{open ? '✕' : '☰'}</span>
+          <button onClick={() => setOpen(!open)} className="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-surface/50 text-electric hover:bg-electric/10 hover:border-electric/30 transition-all">
+            <span className="text-lg leading-none">{open ? '✕' : '☰'}</span>
           </button>
         </div>
 
