@@ -1,9 +1,12 @@
 import crypto from 'crypto';
 
-if (!process.env.JWT_SECRET) {
-  throw new Error('JWT_SECRET environment variable is required');
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error('JWT_SECRET environment variable is required');
+  }
+  return secret;
 }
-const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function hashPassword(password: string) {
   const bcrypt = await import('bcryptjs');
@@ -20,6 +23,7 @@ function base64url(input: Buffer): string {
 }
 
 export function createToken(nama: string): string {
+  const JWT_SECRET = getJwtSecret();
   const header = base64url(Buffer.from('{"alg":"HS256","typ":"JWT"}'));
   const payload = base64url(Buffer.from(JSON.stringify({ nama, exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60 })));
   const signature = crypto
