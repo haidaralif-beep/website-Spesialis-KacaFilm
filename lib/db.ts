@@ -1,17 +1,24 @@
 import { Pool, PoolConfig } from 'pg';
 import { hashPassword } from './auth';
 
-const config: PoolConfig = {
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL?.includes('supabase.com')
-    ? { rejectUnauthorized: false }
-    : false,
-};
+let pool: Pool | null = null;
 
-const pool = new Pool(config);
+function getPool(): Pool {
+  if (!pool) {
+    const config: PoolConfig = {
+      connectionString: process.env.DATABASE_URL,
+      ssl: process.env.DATABASE_URL?.includes('supabase.com')
+        ? { rejectUnauthorized: false }
+        : false,
+    };
+    pool = new Pool(config);
+  }
+  return pool;
+}
 
 export async function query(sql: string, params: any[] = []) {
-  const result = await pool.query(sql, params);
+  const p = getPool();
+  const result = await p.query(sql, params);
   return result.rows;
 }
 
