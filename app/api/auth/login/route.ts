@@ -11,7 +11,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Nama dan password wajib diisi' }, { status: 400 });
     }
 
-    const user = await getUserByNama(nama);
+    let user;
+    try {
+      user = await getUserByNama(nama);
+    } catch (dbErr: any) {
+      console.error('[LOGIN] DB error:', dbErr.message);
+      return NextResponse.json({ error: 'Database error: ' + dbErr.message }, { status: 500 });
+    }
+
     if (!user) {
       return NextResponse.json({ error: 'Nama atau password salah' }, { status: 401 });
     }
@@ -32,7 +39,8 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch (error) {
-    return NextResponse.json({ error: 'Terjadi kesalahan' }, { status: 500 });
+  } catch (error: any) {
+    console.error('[LOGIN] Fatal error:', error.message);
+    return NextResponse.json({ error: 'Terjadi kesalahan: ' + error.message }, { status: 500 });
   }
 }

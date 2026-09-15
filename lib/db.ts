@@ -5,11 +5,14 @@ let pool: Pool | null = null;
 
 function getPool(): Pool {
   if (!pool) {
+    // Strip sslmode from URL, let SSL config handle it
+    const url = (process.env.DATABASE_URL || '').replace(/[?&]sslmode=[^&]*/, '').replace(/\?$/, '');
     const config: PoolConfig = {
-      connectionString: process.env.DATABASE_URL,
-      ssl: process.env.DATABASE_URL?.includes('supabase.com')
-        ? { rejectUnauthorized: false }
-        : false,
+      connectionString: url,
+      ssl: { rejectUnauthorized: false },
+      max: 5,
+      idleTimeoutMillis: 10000,
+      connectionTimeoutMillis: 10000,
     };
     pool = new Pool(config);
   }
@@ -18,8 +21,13 @@ function getPool(): Pool {
 
 export async function query(sql: string, params: any[] = []) {
   const p = getPool();
-  const result = await p.query(sql, params);
-  return result.rows;
+  try {
+    const result = await p.query(sql, params);
+    return result.rows;
+  } catch (err: any) {
+    console.error('[DB QUERY ERROR]', err.message);
+    throw err;
+  }
 }
 
 export interface AdminUser {

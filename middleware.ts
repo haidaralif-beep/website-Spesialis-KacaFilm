@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const JWT_SECRET = process.env.JWT_SECRET!;
-
 async function verifyTokenHMAC(token: string): Promise<boolean> {
   try {
+    const JWT_SECRET = process.env.JWT_SECRET;
+    if (!JWT_SECRET) return false;
+
     const parts = token.split('.');
     if (parts.length !== 3) return false;
 
