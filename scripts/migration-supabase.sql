@@ -24,21 +24,6 @@ CREATE TABLE IF NOT EXISTS materials (
   updated_at TIMESTAMP DEFAULT NOW()
 );
 
--- Trigger to auto-update updated_at on materials
-CREATE OR REPLACE FUNCTION update_materials_timestamp()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.updated_at = NOW();
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS trg_materials_updated_at ON materials;
-CREATE TRIGGER trg_materials_updated_at
-  BEFORE UPDATE ON materials
-  FOR EACH ROW
-  EXECUTE FUNCTION update_materials_timestamp();
-
 -- ============================================
 -- MATERIAL_PHOTOS TABLE
 -- ============================================
@@ -74,9 +59,26 @@ CREATE TABLE IF NOT EXISTS testimonials (
 );
 
 -- ============================================
--- DEFAULT ADMIN USER
+-- TRIGGER: auto-update updated_at on materials
 -- ============================================
+CREATE OR REPLACE FUNCTION update_materials_timestamp()
+RETURNS TRIGGER AS $func$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$func$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_materials_updated_at ON materials;
+CREATE TRIGGER trg_materials_updated_at
+  BEFORE UPDATE ON materials
+  FOR EACH ROW
+  EXECUTE FUNCTION update_materials_timestamp();
+
+-- ============================================
+-- DEFAULT ADMIN USER
 -- Password: admin123 (bcrypt hashed)
+-- ============================================
 INSERT INTO users (nama, password, role)
-VALUES ('admin', '$2a$10$YWJkMjQ0ZGYtYzI3NC00YTZiLWJlYTEtZGE5NjY0YjM5NjQ3', 'admin')
+VALUES ('admin', '$2b$10$QhcHAWg1jnmzu8YT3Am/Pe1dX14G8hy1lNoSNT.ywB1x2yxIJrQMK', 'admin')
 ON CONFLICT (nama) DO NOTHING;

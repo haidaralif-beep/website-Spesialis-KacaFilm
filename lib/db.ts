@@ -1,9 +1,14 @@
-import { Pool } from 'pg';
+import { Pool, PoolConfig } from 'pg';
 import { hashPassword } from './auth';
 
-const pool = new Pool({
+const config: PoolConfig = {
   connectionString: process.env.DATABASE_URL,
-});
+  ssl: process.env.DATABASE_URL?.includes('supabase.com')
+    ? { rejectUnauthorized: false }
+    : false,
+};
+
+const pool = new Pool(config);
 
 export async function query(sql: string, params: any[] = []) {
   const result = await pool.query(sql, params);

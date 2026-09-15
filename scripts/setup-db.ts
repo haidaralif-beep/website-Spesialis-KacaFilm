@@ -8,29 +8,18 @@ async function setupDatabase() {
 
   const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
+    ssl: process.env.DATABASE_URL?.includes('supabase.com')
+      ? { rejectUnauthorized: false }
+      : false,
   });
 
   try {
-    // Run migration SQL
+    // Run migration SQL as a single query
     const migrationPath = join(__dirname, 'migration-supabase.sql');
     const migrationSQL = readFileSync(migrationPath, 'utf-8');
 
-    // Split by semicolons and execute each statement
-    const statements = migrationSQL
-      .split(';')
-      .map(s => s.trim())
-      .filter(s => s.length > 0 && !s.startsWith('--'));
-
-    for (const statement of statements) {
-      try {
-        await pool.query(statement);
-      } catch (err: any) {
-        // Ignore duplicate table/index errors
-        if (!err.message.includes('already exists')) {
-          console.error('Error executing statement:', err.message);
-        }
-      }
-    }
+    await pool.query(migrationSQL);
+    console.log('✅ Tables created successfully');
 
     // Ensure default admin exists with correct password
     const adminCheck = await pool.query('SELECT * FROM users WHERE nama = $1', ['admin']);
