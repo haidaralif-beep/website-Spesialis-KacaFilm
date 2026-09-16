@@ -218,8 +218,8 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {services.map((service, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
-              <div className="glass-panel p-6 sm:p-7 shadow-lg hover:border-electric/40 hover:shadow-[0_0_35px_rgba(25,167,255,0.2)] transition-all duration-300 group flex flex-col justify-between h-full">
+              <ScrollReveal key={index} delay={index * 100} className="h-full">
+              <div className="glass-panel p-6 sm:p-7 shadow-lg hover:border-electric/40 hover:shadow-[0_0_35px_rgba(25,167,255,0.2)] transition-all duration-300 group flex flex-col justify-between h-full min-h-[320px]">
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-electric/10 border border-electric/20 text-electric flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-electric/40 transition-transform">
                     <service.icon size={24} />
@@ -337,12 +337,14 @@ export default function HomePage() {
           </div>
           </div>
 
+          {hasilPemasangan.length >= 5 && (
           <div className="mt-12 text-center">
             <Link href="/portfolio" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-electric/40 hover:border-electric text-white font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(25,167,255,0.3)]">
               <span>Lihat Semua project (500+ project)</span>
               <span>→</span>
             </Link>
           </div>
+          )}
         </div>
       </section>
 
@@ -396,12 +398,14 @@ export default function HomePage() {
             )}
           </div>
 
+          {materials.length >= 5 && (
           <div className="mt-12 text-center">
             <Link href="/materials" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-electric/40 hover:border-electric text-white font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(25,167,255,0.3)]">
               <span>Lihat Semua Bahan (500+ Bahan)</span>
               <span>→</span>
             </Link>
           </div>
+          )}
         </div>
       </section>
 
@@ -424,7 +428,7 @@ export default function HomePage() {
             .testimonial-track {
               display: flex;
               gap: 1.5rem;
-              animation: scroll-left 18s linear infinite;
+              animation: scroll-left 30s linear infinite;
               width: max-content;
             }
             .testimonial-track:hover {
