@@ -10,6 +10,7 @@
     "setup-db": "node scripts/setup-db.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
     "@types/pg": "^8.23.1",
     "bcryptjs": "^3.0.3",
     "lucide-react": "^1.43.0",

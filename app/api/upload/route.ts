@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
+import { supabase } from '@/lib/supabase';
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
@@ -33,28 +32,30 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Sanitize filename — strip path separators and null bytes
+    // Sanitize filename
     const safeName = file.name
       .replace(/[^a-zA-Z0-9._-]/g, '_')
       .replace(/\.{2,}/g, '.')
       .replace(/^\.+$/, '_');
 
-    const fileName = `material_${Date.now()}_${safeName}`;
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    const filePath = join(uploadDir, fileName);
+    const fileName = `uploads/${Date.now()}_${safeName}`;
 
-    // Verify resolved path is inside uploads directory
-    const resolved = filePath.replace(/\\/g, '/');
-    const allowedDir = uploadDir.replace(/\\/g, '/');
-    if (!resolved.startsWith(allowedDir)) {
-      return NextResponse.json({ error: 'Nama file tidak valid' }, { status: 400 });
+    const { error } = await supabase.storage
+      .from('kaca-film')
+      .upload(fileName, buffer, {
+        contentType: file.type,
+        upsert: false,
+      });
+
+    if (error) {
+      return NextResponse.json({ error: `Gagal upload: ${error.message}` }, { status: 500 });
     }
 
-    await mkdir(uploadDir, { recursive: true });
-    await writeFile(filePath, buffer);
+    const { data: urlData } = supabase.storage
+      .from('kaca-film')
+      .getPublicUrl(fileName);
 
-    const url = `/uploads/${fileName}`;
-    return NextResponse.json({ success: true, url, fileName });
+    return NextResponse.json({ success: true, url: urlData.publicUrl, fileName });
   } catch (error: any) {
     return NextResponse.json({ error: 'Gagal mengupload file' }, { status: 500 });
   }
