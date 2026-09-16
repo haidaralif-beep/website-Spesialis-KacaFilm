@@ -99,7 +99,7 @@ export default function TambahMaterialPage() {
   return (
     <div>
       <div className="min-h-screen bg-background pt-24 pb-20">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none"></div>
         <div className="container-custom relative z-10 max-w-3xl mx-auto">
           <Link href="/admin/material" className="inline-flex items-center gap-2 text-text-secondary hover:text-electric transition-colors text-sm font-medium mb-6">
             ← Kembali

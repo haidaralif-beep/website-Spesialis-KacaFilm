@@ -20,7 +20,7 @@ export default function NavBar() {
             <Link href="/#services" className="text-text-secondary hover:text-white transition-colors duration-200 py-2">Layanan</Link>
             <Link href="/#portfolio" className="text-text-secondary hover:text-white transition-colors duration-200 py-2">Project</Link>
             <Link href="/#katalog" className="text-text-secondary hover:text-white transition-colors duration-200 py-2">Katalog</Link>
-            <a href="https://wa.me/6289637033005?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20kaca%20film." target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2 text-sm font-medium border border-electric text-electric hover:bg-electric hover:text-background transition-all rounded-full">Hubungi Kami</a>
+            <a href="https://wa.me/6289637033005?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20pemasangan%20kaca%20film.%20Saya%20ingin%20mendapatkan%20informasi%20lebih%20lanjut%20mengenai%20pilihan%20kaca%20film%2C%20harga%2C%20dan%20rekomendasi%20yang%20sesuai%20dengan%20kebutuhan%20saya.%20Apakah%20bisa%20melakukan%20konsultasi%20gratis%3F" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2 text-sm font-medium border border-electric text-electric hover:bg-electric hover:text-background transition-all rounded-full">Hubungi Kami</a>
           </div>
 
           <button onClick={() => setOpen(!open)} className="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-surface/50 text-electric hover:bg-electric/10 hover:border-electric/30 transition-all">
@@ -34,7 +34,7 @@ export default function NavBar() {
             <Link href="/#services" className="block py-2 text-text-secondary hover:text-white">Layanan</Link>
             <Link href="/#portfolio" className="block py-2 text-text-secondary hover:text-white">Project</Link>
             <Link href="/#katalog" className="block py-2 text-text-secondary hover:text-white">Katalog</Link>
-            <a href="https://wa.me/6289637033005?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20kaca%20film." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium border border-electric text-electric hover:bg-electric hover:text-background transition-all rounded-full w-full">Hubungi Kami</a>
+            <a href="https://wa.me/6289637033005?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20pemasangan%20kaca%20film.%20Saya%20ingin%20mendapatkan%20informasi%20lebih%20lanjut%20mengenai%20pilihan%20kaca%20film%2C%20harga%2C%20dan%20rekomendasi%20yang%20sesuai%20dengan%20kebutuhan%20saya.%20Apakah%20bisa%20melakukan%20konsultasi%20gratis%3F" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium border border-electric text-electric hover:bg-electric hover:text-background transition-all rounded-full w-full">Hubungi Kami</a>
           </div>
         )}
       </div>

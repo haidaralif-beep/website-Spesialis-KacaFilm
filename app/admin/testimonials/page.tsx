@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Star, Plus, Pencil, Trash2 } from 'lucide-react';
+import { Star, Trash2 } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -47,20 +47,13 @@ export default function AdminTestimonialsPage() {
   return (
     <div>
       <div className="min-h-screen bg-background pt-24 pb-20">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none"></div>
         <div className="container-custom relative z-10 max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="text-2xl font-black text-white">Testimoni</h1>
               <p className="text-text-secondary text-sm mt-1">Kelola semua testimoni pelanggan ({testimonials.length})</p>
             </div>
-            <Link
-              href="/admin/testimonials/tambah"
-              className="btn-cta-blue inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold"
-            >
-              <Plus className="w-4 h-4" />
-              Tambah
-            </Link>
           </div>
 
           {loading ? (
@@ -98,12 +91,6 @@ export default function AdminTestimonialsPage() {
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <Link
-                        href={`/admin/testimonials/${item.id}/edit`}
-                        className="p-2 rounded-lg text-text-secondary hover:text-electric hover:bg-electric/10 transition-colors"
-                      >
-                        <Pencil className="w-4 h-4" />
-                      </Link>
                       <button
                         onClick={() => handleDelete(item.id, item.nama)}
                         className="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors"

@@ -38,7 +38,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none"></div>
       <div className="relative z-10 w-full max-w-md">
         <div className="glass-panel p-8 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8)]">
           <div className="text-center mb-6">

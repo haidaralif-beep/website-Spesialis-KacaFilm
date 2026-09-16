@@ -97,7 +97,7 @@ export default function AdminDashboard() {
   return (
     <div>
       <div className="min-h-screen bg-background pt-20">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none"></div>
         <div className="container-custom relative z-10 py-8 max-w-6xl mx-auto">
           {/* Header */}
           <div className="mb-8 pb-6 border-b border-border">
