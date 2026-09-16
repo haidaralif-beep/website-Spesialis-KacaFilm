@@ -2,18 +2,12 @@
 
 import { useState } from 'react';
 
-interface ReadMoreProps {
-  text: string;
-  className?: string;
-  maxLength?: number;
-}
-
-export default function ReadMore({ text, className = '', maxLength = 120 }: ReadMoreProps) {
+export default function ReadMore({ text, className = '' }: { text: string; className?: string }) {
   const [expanded, setExpanded] = useState(false);
 
   if (!text) return null;
 
-  const isLong = text.length > maxLength;
+  const isLong = text.length > 80;
 
   if (!isLong) {
     return <p className={className}>{text}</p>;
@@ -21,13 +15,12 @@ export default function ReadMore({ text, className = '', maxLength = 120 }: Read
 
   return (
     <div className={className}>
-      <p className={expanded ? '' : 'line-clamp-3'}>{expanded ? text : text.slice(0, maxLength) + '...'}</p>
+      <p>{expanded ? text : text.slice(0, 80) + '...'}</p>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="text-electric text-xs font-semibold mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all"
+        className="text-electric text-xs font-semibold mt-1 hover:underline"
       >
-        <span>{expanded ? 'Tutup' : 'Lihat Semua Penjelasan'}</span>
-        <span>→</span>
+        {expanded ? 'Tutup' : 'Selengkapnya'}
       </button>
     </div>
   );

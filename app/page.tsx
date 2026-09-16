@@ -86,12 +86,12 @@ export default function HomePage() {
     return photos.find(p => p.material_id === materialId);
   };
   const services = [
-    { icon: Building2, title: 'Kaca Film Gedung', description: 'Solusi hemat energi dan privasi untuk perkantoran, mall, dan gedung komersial. Mengurangi panas matahari hingga 95% sehingga tagihan listrik AC lebih hemat. Cocok untuk gedung bertingkat yang menghadap langsung ke arah matahari.', features: ['Hemat listrik', 'Reduksi UV 99%'] },
-    { icon: Home, title: 'Kaca Film Rumah', description: 'Ciptakan rumah yang nyaman, sejuk, dan terlindungi dari sinar matahari. Kaca film rumah menjaga privasi keluarga tanpa mengurangi pencahayaan alami. Tersedia berbagai tingkat kegelapan sesuai kebutuhan setiap ruangan.', features: ['Nyaman sepanjang hari', 'Privasi terjaga', 'Estetika modern'] },
-    { icon: Car, title: 'Kaca Film Mobil', description: 'Lindungi interior mobil dan penumpang dari panas berlebih dan sinar UV berbahaya. Kabin menjadi lebih sejuk dan nyaman saat berkendara. Tampilan mobil lebih elegan sekaligus memberikan perlindungan maksimal bagi pengemudi dan penumpang.', features: ['Perlindungan UV', 'Kabin lebih sejuk', 'Tampilan elegan'] },
-    { icon: Sparkles, title: 'Kaca Film Dekoratif', description: 'Tambahkan sentuhan estetika pada ruangan Anda dengan berbagai pilihan motif dan warna yang menarik. Selain memperindah tampilan, kaca film dekoratif juga berfungsi sebagai privasi dari pandangan luar tanpa perlu tirai atau gorden tambahan.', features: ['Banyak pilihan motif', 'Privasi', 'Nilai estetika tinggi'] },
-    { icon: Shield, title: 'Kaca Film Keamanan', description: 'Perlindungan ekstra dari pecahan kaca dan upaya pembobolan. Kaca film keamanan menahan pecahan kaca agar tidak berserakan dan memberikan ketahanan tambahan terhadap benturan. Ideal untuk toko, ruko, dan gedung di area strategis.', features: ['Anti pecah', 'Keamanan ekstra', 'Mencegah pembobolan'] },
-    { icon: Sun, title: 'Kaca Film Thermal', description: 'Teknologi canggih untuk menolak panas infrared dan menjaga suhu ruangan tetap stabil sepanjang hari. Mengurangi ketergantungan pada AC sehingga hemat energi dan ramah lingkungan. Cocok untuk gedung dan rumah di daerah tropis.', features: ['Hemat energi', 'Suhu stabil', 'Ramah lingkungan'] },
+    { icon: Building2, title: 'Kaca Film Gedung', description: 'Hemat energi dan privasi untuk perkantoran, mall, dan gedung komersial.', features: ['Hemat listrik', 'Reduksi UV 99%'] },
+    { icon: Home, title: 'Kaca Film Rumah', description: 'Ciptakan rumah yang nyaman, sejuk, dan terlindungi dari sinar matahari.', features: ['Nyaman sepanjang hari', 'Privasi terjaga', 'Estetika modern'] },
+    { icon: Car, title: 'Kaca Film Mobil', description: 'Lindungi interior mobil dan penumpang dari panas dan sinar UV berbahaya.', features: ['Perlindungan UV', 'Kabin lebih sejuk', 'Tampilan elegan'] },
+    { icon: Sparkles, title: 'Kaca Film Dekoratif', description: 'Tambahkan sentuhan estetika dengan motif dan warna yang menarik.', features: ['Banyak pilihan motif', 'Privasi', 'Nilai estetika tinggi'] },
+    { icon: Shield, title: 'Kaca Film Keamanan', description: 'Perlindungan ekstra dari pecahan kaca dan upaya pembobolan.', features: ['Anti pecah', 'Keamanan ekstra', 'Mencegah pembobolan'] },
+    { icon: Sun, title: 'Kaca Film Thermal', description: 'Teknologi canggih untuk menolak panas dan menjaga suhu ruangan.', features: ['Hemat energi', 'Suhu stabil', 'Ramah lingkungan'] },
   ];
 
   return (
@@ -225,7 +225,7 @@ export default function HomePage() {
                     <service.icon size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2.5 group-hover:text-electric transition-colors">{service.title}</h3>
-                   <ReadMore text={service.description} className="text-text-secondary text-sm leading-relaxed mb-6" maxLength={100} />
+                   <p className="text-text-secondary text-sm leading-relaxed mb-6">{service.description}</p>
                   <ul className="space-y-2.5 mb-6">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-text-secondary">
@@ -296,7 +296,7 @@ export default function HomePage() {
                   <div className="p-5 flex flex-col justify-between flex-grow">
                     <h3 className="text-lg font-bold text-white mb-2.5 group-hover:text-electric transition-colors">{item.nama_tempat}</h3>
                     {item.deskripsi && (
-                       <ReadMore text={item.deskripsi} className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2" maxLength={100} />
+                       <ReadMore text={item.deskripsi} className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2" />
                     )}
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export default function HomePage() {
                   <div className="p-5 flex flex-col flex-1">
                     <h3 className="text-white font-bold text-base mb-2 group-hover:text-electric transition-colors">{item.nama_bahan}</h3>
                     {item.spesifikasi && (
-                       <ReadMore text={item.spesifikasi} className="text-text-secondary text-sm leading-relaxed flex-1 line-clamp-2" maxLength={100} />
+                       <ReadMore text={item.spesifikasi} className="text-text-secondary text-sm leading-relaxed flex-1 line-clamp-2" />
                     )}
                     <Link href="https://wa.me/6289637033005?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20pemasangan%20kaca%20film.%20Saya%20ingin%20mendapatkan%20informasi%20lebih%20lanjut%20mengenai%20pilihan%20kaca%20film%2C%20harga%2C%20dan%20rekomendasi%20yang%20sesuai%20dengan%20kebutuhan%20saya.%20Apakah%20bisa%20melakukan%20konsultasi%20gratis%3F" className="text-xs font-semibold text-electric inline-flex items-center gap-1 group-hover:gap-2 transition-all mt-4">
                       <span>Konsultasi Sekarang</span>
