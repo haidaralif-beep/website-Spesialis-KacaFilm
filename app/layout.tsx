@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     apple: '/logo.jpeg',
   },
   verification: {
-    google: '',
+    google: 'nZh7t1SMlAfbBYke0D50JD5hrk',
   },
 };
 
