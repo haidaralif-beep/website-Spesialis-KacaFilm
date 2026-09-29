@@ -102,9 +102,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/logo.jpeg',
-    shortcut: '/logo.jpeg',
-    apple: '/logo.jpeg',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon-180.png',
+    other: [
+      { rel: 'icon', url: '/favicon-192.png', sizes: '192x192' },
+      { rel: 'icon', url: '/favicon-512.png', sizes: '512x512' },
+    ],
   },
   verification: {
     google: 'nZh7t1SMlAfbBYke0D50JD5hrk',
